@@ -2,31 +2,33 @@
 
 import { useGSAP } from '@/hooks/useGSAP'
 import { gsap } from '@/lib/gsap'
+import { Scissors, UtensilsCrossed, ShoppingBag, Building2, Briefcase } from 'lucide-react'
+import Container from '@/components/ui/Container'
 
 const sectors = [
   {
     name: 'Barbieri & Parrucchieri',
-    icon: '✂️',
+    icon: Scissors,
     description: 'Prenotazioni automatiche, gestione clienti, promemoria intelligenti',
   },
   {
     name: 'Ristorazione',
-    icon: '🍽️',
+    icon: UtensilsCrossed,
     description: 'Prenotazioni tavoli, ordini online, gestione coperti in tempo reale',
   },
   {
     name: 'Retail',
-    icon: '🛍️',
+    icon: ShoppingBag,
     description: 'Inventario, CRM clienti, programmi fedeltà personalizzati',
   },
   {
     name: 'Studi Medici',
-    icon: '🏥',
+    icon: Building2,
     description: 'Prenotazioni visite, promemoria pazienti, gestione anamnesi',
   },
   {
     name: 'Servizi Professionali',
-    icon: '💼',
+    icon: Briefcase,
     description: 'Booking consulenze, CRM leads, automazione follow-up',
   },
 ]
@@ -66,36 +68,39 @@ export default function SectorsSection() {
   return (
     <section
       ref={containerRef}
-      className="py-20 md:py-32 bg-background-surface"
+      className="py-20 md:py-32 bg-navy-mid"
     >
-      <div className="container mx-auto px-6">
-        <h2 className="sectors-title text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-white">
+      <Container>
+        <h2 className="sectors-title text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 text-white font-heading">
           Settori che serviamo
         </h2>
-        <p className="text-lg text-gray-300 text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-lg text-text-secondary text-center mb-16 max-w-2xl mx-auto">
           Ogni business ha le sue inefficienze. Noi le identifichiamo e costruiamo 
           il sistema su misura per eliminarle.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {sectors.map((sector, index) => (
-            <div
-              key={index}
-              className="sector-card group bg-background border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-2"
-            >
-              <div className="text-5xl mb-4 transition-transform duration-300 group-hover:scale-110">
-                {sector.icon}
+          {sectors.map((sector, index) => {
+            const IconComponent = sector.icon
+            return (
+              <div
+                key={index}
+                className="sector-card group bg-navy-deep/50 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-cyan-electric/50 hover:shadow-lg hover:shadow-cyan-electric/10 hover:-translate-y-2"
+              >
+                <div className="p-3 bg-cyan-electric/10 rounded-lg text-cyan-electric w-fit mb-4 group-hover:bg-cyan-electric group-hover:text-navy-deep transition-all duration-300">
+                  <IconComponent className="w-8 h-8" />
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-3 font-heading">
+                  {sector.name}
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  {sector.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {sector.name}
-              </h3>
-              <p className="text-sm text-gray-400 leading-relaxed">
-                {sector.description}
-              </p>
-            </div>
-          ))}
+            )
+          })}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScroll'
 import PageTransition from '@/components/providers/PageTransition'
+import PulsePreloader from '@/components/providers/PulsePreloader'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -57,17 +58,19 @@ export default function RootLayout({
         />
       </head>
       <body className="font-body">
-        <SmoothScrollProvider>
-          <PageTransition>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <main className="flex-grow">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </PageTransition>
-        </SmoothScrollProvider>
+        <PulsePreloader>
+          <SmoothScrollProvider>
+            <PageTransition>
+              <div className="flex flex-col min-h-screen">
+                <Header />
+                <main className="flex-grow">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </PageTransition>
+          </SmoothScrollProvider>
+        </PulsePreloader>
       </body>
     </html>
   )

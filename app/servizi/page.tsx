@@ -5,11 +5,11 @@ import ServicesCtaSection from '@/components/sections/services/ServicesCtaSectio
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Servizi — InnovaFlow | Automazioni su Misura',
-  description: 'Dashboard gestionali, chatbot WhatsApp, integrazioni automatiche, CRM personalizzati. Sistemi su misura per eliminare le inefficienze del tuo business.',
+  title: 'Servizi — InnovaFlow | Non abbiamo un catalogo. Abbiamo un metodo.',
+  description: 'Non vendiamo prodotti. Analizziamo il tuo business, troviamo dove perdi tempo e soldi, costruiamo la soluzione su misura. Analisi gratuita.',
   openGraph: {
-    title: 'Servizi — InnovaFlow | Automazioni su Misura',
-    description: 'Dashboard gestionali, chatbot WhatsApp, integrazioni automatiche, CRM personalizzati. Sistemi su misura per eliminare le inefficienze del tuo business.',
+    title: 'Servizi — InnovaFlow | Non abbiamo un catalogo. Abbiamo un metodo.',
+    description: 'Non vendiamo prodotti. Analizziamo il tuo business, troviamo dove perdi tempo e soldi, costruiamo la soluzione su misura.',
     type: 'website',
   },
 }
@@ -19,67 +19,67 @@ export default function Servizi() {
     <main>
       <ServicesHero />
 
-      {/* Servizio 1: Dashboard Gestionali */}
+      {/* Servizio 1: Comunicazione Clienti */}
       <ServiceDetailSection
         number="01"
-        title="Dashboard Gestionali"
-        description="Prenotazioni, clienti, staff, tutto in un posto. Vedi l'intero business in tempo reale, da qualsiasi dispositivo. Non serve aprire 5 app diverse, tutto è qui."
+        title="Comunicazione Clienti"
+        description="Chatbot WhatsApp/Telegram, email automatiche, SMS notifiche, reminder automatici. I tuoi clienti ricevono risposte immediate, 24/7, senza che tu debba stare al telefono."
         features={[
-          'Agenda completa con visualizzazione giornaliera, settimanale, mensile',
-          'Gestione clienti con storico completo e preferenze salvate',
-          'Statistiche in tempo reale: prenotazioni, no-show, tasso occupazione',
-          'Mobile-first: controlla tutto dallo smartphone',
-          'Notifiche intelligenti per nuove prenotazioni e modifiche',
+          'Chatbot WhatsApp/Telegram con risposte in linguaggio naturale',
+          'Email automatiche per conferme e promemoria',
+          'SMS notifiche per appuntamenti imminenti',
+          'Reminder automatici per ridurre i no-show',
+          'Passaggio seamless a operatore umano quando necessario',
         ]}
-        icon="📊"
+        iconName="message-square"
         reverse={false}
       />
 
-      {/* Servizio 2: Chatbot WhatsApp */}
+      {/* Servizio 2: Gestione Dati */}
       <ServiceDetailSection
         number="02"
-        title="Chatbot WhatsApp 24/7"
-        description="Il tuo assistente virtuale che non dorme mai. Risponde ai clienti, prende prenotazioni, conferma appuntamenti, invia promemoria. Anche di notte, anche nel weekend."
+        title="Gestione Dati"
+        description="Dashboard personalizzate, CRM su misura, gestione magazzino, report automatici. Tutti i tuoi dati in un unico posto, visibili in tempo reale, accessibili da qualsiasi dispositivo."
         features={[
-          'Risponde in linguaggio naturale, sembra umano',
-          'Prende prenotazioni automaticamente verificando disponibilità',
-          'Invia conferme e promemoria prima degli appuntamenti',
-          'Gestisce modifiche e cancellazioni senza intervento manuale',
-          'Si integra con la dashboard per sincronizzazione istantanea',
+          'Dashboard personalizzate secondo le tue esigenze',
+          'CRM su misura per tracciare clienti e interazioni',
+          'Gestione magazzino con alert automatici',
+          'Report automatici periodici via email',
+          'Accesso multi-dispositivo (desktop, tablet, mobile)',
         ]}
-        icon="🤖"
+        iconName="layout-dashboard"
         reverse={true}
       />
 
-      {/* Servizio 3: Integrazioni & Automazioni */}
+      {/* Servizio 3: Processi Operativi */}
       <ServiceDetailSection
         number="03"
-        title="Integrazioni & Automazioni"
-        description="Collegare i sistemi che già usi. Google Calendar, email, strumenti esistenti. Sincronizzazione automatica, zero doppio lavoro. Aggiungi una prenotazione? Appare ovunque istantaneamente."
+        title="Processi Operativi"
+        description="Automazione prenotazioni, fatturazione automatica, ordini fornitori, gestione turni. Elimina il lavoro manuale ripetitivo e riduci gli errori umani."
         features={[
-          'Integrazione con Google Calendar e altri calendari esterni',
-          'Sincronizzazione bidirezionale: modifica qui, si aggiorna ovunque',
-          'Automazioni custom basate su trigger specifici (es: email dopo 3 no-show)',
-          'Connessione con strumenti di pagamento (Stripe, PayPal)',
-          'API aperte per integrazioni future',
+          'Automazione completa delle prenotazioni',
+          'Fatturazione automatica con integrazione SDI',
+          'Ordini fornitori automatici basati su soglie',
+          'Gestione turni e disponibilità staff',
+          'Workflow personalizzati per il tuo business',
         ]}
-        icon="🔗"
+        iconName="settings"
         reverse={false}
       />
 
-      {/* Servizio 4: CRM Personalizzato */}
+      {/* Servizio 4: Integrazioni */}
       <ServiceDetailSection
         number="04"
-        title="CRM Personalizzato"
-        description="Conosci davvero i tuoi clienti. Storico completo, preferenze salvate, comunicazione mirata. Non più 'mi sembra di averlo già visto' — hai tutti i dati."
+        title="Integrazioni"
+        description="Collegare tool esistenti, sincronizzare dati, API custom, webhook automatici. Non buttare via i sistemi che già usi — integriamoli in un'unica soluzione coerente."
         features={[
-          'Scheda cliente completa: storico appuntamenti, servizi preferiti, note',
-          'Segmentazione intelligente: clienti nuovi, fedeli, a rischio abbandono',
-          'Comunicazioni mirate via WhatsApp o email a gruppi specifici',
-          'Programmi fedeltà automatici (es: ogni 10 tagli, uno gratis)',
-          'Report dettagliati: chi sono i clienti più profittevoli, chi non torna',
+          'Integrazione con tool esistenti (Calendar, email, etc.)',
+          'Sincronizzazione dati bidirezionale in tempo reale',
+          'API custom per esigenze specifiche',
+          'Webhook automatici per trigger personalizzati',
+          'Compatibilità con software di contabilità e gestione',
         ]}
-        icon="👥"
+        iconName="link"
         reverse={true}
       />
 
