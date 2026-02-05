@@ -6,6 +6,17 @@ import CaseStudySection from '@/components/sections/CaseStudySection'
 import PricingPreviewSection from '@/components/sections/PricingPreviewSection'
 import FAQSection from '@/components/sections/FAQSection'
 import CTASection from '@/components/sections/CTASection'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'InnovaFlow — Il tuo business lavora per te, anche quando dormi',
+  description: 'Automazioni su misura per PMI. Dashboard personalizzate, chatbot WhatsApp intelligenti, integrazioni su misura. Eliminiamo le inefficienze invisibili del tuo business.',
+  openGraph: {
+    title: 'InnovaFlow — Il tuo business lavora per te, anche quando dormi',
+    description: 'Automazioni su misura per PMI. Dashboard personalizzate, chatbot WhatsApp intelligenti, integrazioni su misura.',
+    type: 'website',
+  },
+}
 
 export default function Home() {
   return (

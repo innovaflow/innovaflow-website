@@ -18,8 +18,34 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const schemaOrg = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'InnovaFlow',
+    description: 'Automazioni su misura per PMI. Dashboard personalizzate, chatbot WhatsApp intelligenti, integrazioni custom.',
+    url: 'https://innovaflow.it',
+    logo: 'https://innovaflow.it/logo.png',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      email: 'info@innovaflow.it',
+      contactType: 'customer service',
+      areaServed: 'IT',
+      availableLanguage: 'Italian'
+    },
+    sameAs: [
+      'https://linkedin.com/company/innovaflow',
+      'https://twitter.com/innovaflow_',
+    ]
+  }
+
   return (
     <html lang="it">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+        />
+      </head>
       <body className={inter.className}>
         <SmoothScrollProvider>
           <PageTransition>

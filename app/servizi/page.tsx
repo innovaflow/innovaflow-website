@@ -2,10 +2,16 @@ import ServicesHero from '@/components/sections/services/ServicesHero'
 import ServiceDetailSection from '@/components/sections/services/ServiceDetailSection'
 import SectorsSection from '@/components/sections/services/SectorsSection'
 import ServicesCtaSection from '@/components/sections/services/ServicesCtaSection'
+import type { Metadata } from 'next'
 
-export const metadata = {
-  title: 'Servizi | InnovaFlow — Automazioni su Misura',
+export const metadata: Metadata = {
+  title: 'Servizi — InnovaFlow | Automazioni su Misura',
   description: 'Dashboard gestionali, chatbot WhatsApp, integrazioni automatiche, CRM personalizzati. Sistemi su misura per eliminare le inefficienze del tuo business.',
+  openGraph: {
+    title: 'Servizi — InnovaFlow | Automazioni su Misura',
+    description: 'Dashboard gestionali, chatbot WhatsApp, integrazioni automatiche, CRM personalizzati. Sistemi su misura per eliminare le inefficienze del tuo business.',
+    type: 'website',
+  },
 }
 
 export default function Servizi() {
