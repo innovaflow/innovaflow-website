@@ -9,34 +9,50 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // InnovaFlow Brand Colors
+        navy: {
+          deep: '#1a1f3a',
+          mid: '#2d3556',
+        },
+        cyan: {
+          electric: '#00d9ff',
+        },
+        teal: {
+          bright: '#00ffcc',
+        },
+        purple: {
+          hint: '#8b5cf6',
+        },
+        // Semantic colors
         background: {
-          DEFAULT: '#0A0A0B',
-          surface: '#111113',
-          'surface-secondary': '#1A1A1D',
+          DEFAULT: '#0a0e1a',
+          surface: '#1a1f3a',
+          'surface-secondary': '#2d3556',
         },
         primary: {
-          DEFAULT: '#6366F1',
-          50: '#EEF2FF',
-          100: '#E0E7FF',
-          500: '#6366F1',
-          600: '#4F46E5',
-          700: '#4338CA',
-          900: '#312E81',
+          DEFAULT: '#00d9ff',
+          50: '#e6f9ff',
+          100: '#b3f0ff',
+          500: '#00d9ff',
+          600: '#00c4e6',
+          700: '#00aec9',
         },
         accent: {
-          DEFAULT: '#8B5CF6',
-          500: '#8B5CF6',
-          600: '#7C3AED',
+          DEFAULT: '#00ffcc',
+          500: '#00ffcc',
+          600: '#00e6b8',
         },
         text: {
-          DEFAULT: '#F8FAFC',
-          primary: '#F8FAFC',
-          secondary: '#94A3B8',
-          muted: '#64748B',
+          DEFAULT: '#ffffff',
+          primary: '#ffffff',
+          secondary: '#cbd5e1',
+          muted: '#94a3b8',
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        heading: ['var(--font-space-grotesk)', 'Space Grotesk', 'system-ui', 'sans-serif'],
+        body: ['var(--font-dm-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-dm-sans)', 'DM Sans', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         xs: ['12px', { lineHeight: '1.5' }],

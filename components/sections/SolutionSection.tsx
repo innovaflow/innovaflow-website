@@ -3,48 +3,48 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Section from '@/components/ui/Section'
-import SectionTitle from '@/components/ui/SectionTitle'
+import { Search, Palette, Code, TrendingUp } from 'lucide-react'
 import Container from '@/components/ui/Container'
-import Card from '@/components/ui/Card'
+import Button from '@/components/ui/Button'
 
 gsap.registerPlugin(ScrollTrigger)
 
-interface Service {
+interface Step {
   number: string
+  icon: React.ReactNode
   title: string
   description: string
-  icon: string
 }
 
-const services: Service[] = [
+const steps: Step[] = [
   {
     number: '01',
-    title: 'Chatbot WhatsApp 24/7',
-    description: 'Risponde ai clienti, prende prenotazioni, conferma appuntamenti. Anche di notte, anche nel weekend, anche quando sei impegnato. Zero intervento manuale.',
-    icon: '🤖'
+    icon: <Search className="w-6 h-6" />,
+    title: 'Studiamo il tuo business',
+    description: 'Non partiamo da un template. Analizziamo dove perdi tempo e soldi ogni giorno. Quali processi sono manuali? Dove i dati si perdono? Cosa ti fa perdere clienti?'
   },
   {
     number: '02',
-    title: 'Dashboard tutto-in-uno',
-    description: 'Vedi agenda, clienti, statistiche in un colpo d\'occhio. Non serve aprire 5 app diverse. Tutto in un posto, sempre aggiornato, accessibile ovunque.',
-    icon: '📊'
+    icon: <Palette className="w-6 h-6" />,
+    title: 'Progettiamo la tua soluzione',
+    description: 'Ogni business è diverso. Tuo cugino ha un chatbot? Bene per lui. Tu forse hai bisogno di un dashboard per il magazzino. O un\'integrazione tra i tuoi strumenti. Costruiamo quello che serve a TE.'
   },
   {
     number: '03',
-    title: 'Integrazioni automatiche',
-    description: 'Si collega a quello che già usi: calendario Google, email, strumenti esistenti. Sincronizzazione in tempo reale, zero doppio lavoro.',
-    icon: '🔗'
+    icon: <Code className="w-6 h-6" />,
+    title: 'Costruiamo e integriamo',
+    description: 'In 2 settimane, la soluzione è pronta e integrata nel tuo workflow. Zero downtime, zero complicazioni. Funziona con i tuoi strumenti attuali.'
   },
   {
     number: '04',
-    title: 'Su misura per te',
-    description: 'Non un template generico che devi adattare. Costruiamo il sistema che si adatta al TUO modo di lavorare. Workflow personalizzato, campi custom, automazioni specifiche.',
-    icon: '⚙️'
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: 'Misuri il risparmio',
+    description: 'Quante ore risparmiate? Quanti clienti in più? Quanti errori evitati? I numeri parlano chiaro.'
   }
 ]
 
 export default function SolutionSection() {
+  const sectionRef = useRef<HTMLElement>(null)
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
@@ -80,61 +80,63 @@ export default function SolutionSection() {
   }, [])
 
   return (
-    <Section id="solution" className="bg-white dark:bg-gray-950">
+    <section
+      ref={sectionRef}
+      id="solution"
+      className="relative py-24 md:py-32 bg-navy-mid"
+    >
       <Container>
-        <SectionTitle
-          badge="La Soluzione"
-          title="Il tuo business, automatizzato"
-          subtitle="Quattro componenti che trasformano il caos in sistema. Niente software generico, tutto costruito per il tuo flusso."
-          className="text-center mb-12 md:mb-16"
-        />
+        <div className="text-center mb-16">
+          <span className="inline-block mb-4 px-4 py-2 bg-white/5 border border-cyan-electric/30 rounded-full text-sm text-cyan-electric font-medium">
+            La Soluzione
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Come funziona
+          </h2>
+          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+            Quattro step per trasformare il caos in sistema. Ogni soluzione è costruita su misura.
+          </p>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-          {services.map((service, index) => (
-            <Card
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16">
+          {steps.map((step, index) => (
+            <div
               key={index}
               ref={(el) => {
                 cardsRef.current[index] = el
               }}
-              className="group hover:scale-[1.02] hover:shadow-xl transition-all duration-300"
+              className="group p-8 bg-navy-deep/50 border border-white/10 rounded-xl hover:border-cyan-electric/50 hover:shadow-lg hover:shadow-cyan-electric/10 transition-all duration-300"
             >
               <div className="flex items-start gap-4 mb-4">
-                <div className="text-4xl transform group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
+                <div className="p-3 bg-cyan-electric/10 rounded-lg text-cyan-electric group-hover:bg-cyan-electric group-hover:text-navy-deep transition-all duration-300">
+                  {step.icon}
                 </div>
-                <div className="text-sm font-mono font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 px-3 py-1 rounded">
-                  {service.number}
+                <div className="text-sm font-mono font-bold text-cyan-electric bg-cyan-electric/10 px-3 py-1 rounded">
+                  {step.number}
                 </div>
               </div>
               
-              <h3 className="text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white">
-                {service.title}
+              <h3 className="text-xl md:text-2xl font-bold mb-3 text-white font-heading">
+                {step.title}
               </h3>
               
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                {service.description}
+              <p className="text-text-secondary leading-relaxed">
+                {step.description}
               </p>
-            </Card>
+            </div>
           ))}
         </div>
 
-        <div className="text-center mt-12 md:mt-16">
-          <a
+        <div className="text-center">
+          <Button
             href="/servizi"
-            className="inline-flex items-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+            variant="primary"
+            size="lg"
           >
-            Scopri tutti i servizi
-            <svg
-              className="ml-2 w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+            Scopri cosa possiamo fare per te
+          </Button>
         </div>
       </Container>
-    </Section>
+    </section>
   )
 }

@@ -4,8 +4,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import Button from '@/components/ui/Button'
-import GradientText from '@/components/ui/GradientText'
-import ScrollProgress from '@/components/ui/ScrollProgress'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -29,18 +27,19 @@ export default function Header() {
 
   return (
     <>
-      <ScrollProgress />
       <header 
         className={cn(
-          'fixed top-0 w-full z-50 backdrop-blur-md bg-background/80 transition-all duration-300',
-          isScrolled && 'border-b border-background-surface-secondary'
+          'fixed top-0 w-full z-50 transition-all duration-300',
+          isScrolled 
+            ? 'backdrop-blur-md bg-navy-deep/80 border-b border-cyan-electric/20' 
+            : 'bg-transparent'
         )}
       >
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold">
-            <GradientText>InnovaFlow</GradientText>
+          <Link href="/" className="text-2xl font-bold font-heading">
+            <span className="text-gradient">InnovaFlow</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,10 +48,10 @@ export default function Header() {
               <li key={link.href}>
                 <Link 
                   href={link.href} 
-                  className="relative text-text-secondary hover:text-text-primary transition-colors duration-300 group"
+                  className="relative text-text-secondary hover:text-white transition-colors duration-300 group font-medium"
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-cyan-electric to-teal-bright transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
             ))}
@@ -60,8 +59,8 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:block">
-            <Button href="/contatti" variant="primary" size="md">
-              Parla con noi
+            <Button href="/contatti" variant="primary" size="sm">
+              Analizza
             </Button>
           </div>
 
@@ -73,19 +72,19 @@ export default function Header() {
           >
             <span 
               className={cn(
-                'block h-0.5 w-full bg-text-primary transition-all duration-300',
+                'block h-0.5 w-full bg-white transition-all duration-300',
                 isMobileMenuOpen && 'rotate-45 translate-y-2'
               )}
             />
             <span 
               className={cn(
-                'block h-0.5 w-full bg-text-primary transition-all duration-300',
+                'block h-0.5 w-full bg-white transition-all duration-300',
                 isMobileMenuOpen && 'opacity-0'
               )}
             />
             <span 
               className={cn(
-                'block h-0.5 w-full bg-text-primary transition-all duration-300',
+                'block h-0.5 w-full bg-white transition-all duration-300',
                 isMobileMenuOpen && '-rotate-45 -translate-y-2'
               )}
             />
@@ -95,17 +94,17 @@ export default function Header() {
         {/* Mobile Menu */}
         <div 
           className={cn(
-            'md:hidden overflow-hidden transition-all duration-300',
+            'md:hidden overflow-hidden transition-all duration-300 bg-navy-deep/95 backdrop-blur-md rounded-b-xl',
             isMobileMenuOpen ? 'max-h-96 pb-6' : 'max-h-0'
           )}
         >
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-4 pt-4">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link 
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-text-secondary hover:text-text-primary transition-colors duration-300"
+                  className="block text-text-secondary hover:text-cyan-electric transition-colors duration-300 font-medium"
                 >
                   {link.label}
                 </Link>
@@ -119,7 +118,7 @@ export default function Header() {
                 className="w-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Parla con noi
+                Analizza la Tua Azienda
               </Button>
             </li>
           </ul>

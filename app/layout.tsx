@@ -1,16 +1,26 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Space_Grotesk, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScroll'
 import PageTransition from '@/components/providers/PageTransition'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  weight: ['500', '700'],
+})
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  variable: '--font-dm-sans',
+  weight: ['400', '500'],
+})
 
 export const metadata: Metadata = {
-  title: 'InnovaFlow - Il sistema che elimina le inefficienze invisibili del tuo business',
-  description: 'Dashboard personalizzate, chatbot WhatsApp intelligenti, automazioni su misura per PMI. Zero software pre-confezionato.',
+  title: 'InnovaFlow — Il tuo business perde tempo e soldi ogni giorno. Noi troviamo dove. E risolviamo.',
+  description: 'Automazioni su misura per eliminare inefficienze. Niente template, solo soluzioni costruite per te. Dashboard, chatbot, integrazioni personalizzate.',
 }
 
 export default function RootLayout({
@@ -39,14 +49,14 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="it">
+    <html lang="it" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
         />
       </head>
-      <body className={inter.className}>
+      <body className="font-body">
         <SmoothScrollProvider>
           <PageTransition>
             <div className="flex flex-col min-h-screen">

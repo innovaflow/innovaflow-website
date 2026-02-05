@@ -3,48 +3,42 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Section from '@/components/ui/Section'
-import SectionTitle from '@/components/ui/SectionTitle'
+import { Repeat, Layers, UserX, EyeOff } from 'lucide-react'
 import Container from '@/components/ui/Container'
-import Card from '@/components/ui/Card'
 
 gsap.registerPlugin(ScrollTrigger)
 
 interface PainPoint {
-  icon: string
+  icon: React.ReactNode
   headline: string
   body: string
 }
 
 const painPoints: PainPoint[] = [
   {
-    icon: '📱',
-    headline: 'WhatsApp che non si ferma mai',
-    body: 'Rispondi anche di notte, anche nel weekend. I clienti scrivono in continuazione e tu non stacchi mai.'
+    icon: <Repeat className="w-8 h-8" />,
+    headline: 'Processi manuali che rubano ore',
+    body: 'Scrivi la stessa prenotazione su WhatsApp, poi sul quaderno, poi su Excel. Tre volte lo stesso dato.'
   },
   {
-    icon: '📓',
-    headline: 'Fai doppio lavoro',
-    body: 'Scrivi la prenotazione su quaderno, poi la trasferisci su Excel, poi sul calendario. Tre volte lo stesso dato.'
+    icon: <Layers className="w-8 h-8" />,
+    headline: 'Dati sparsi ovunque',
+    body: 'Clienti su Excel, prenotazioni sul calendario, magazzino su carta. Zero visione d\'insieme.'
   },
   {
-    icon: '⏰',
-    headline: 'Perdi clienti perché rispondi tardi',
-    body: 'Se non leggi il messaggio in tempo, il cliente va dal competitor. E tu non lo sai nemmeno.'
+    icon: <UserX className="w-8 h-8" />,
+    headline: 'Clienti che se ne vanno',
+    body: 'Se non rispondi in 10 minuti su WhatsApp, vanno dal competitor. Tu non puoi essere sempre online.'
   },
   {
-    icon: '😫',
-    headline: 'Il weekend lo passi a confermare',
-    body: 'Sabato e domenica: messaggi, conferme, spostamenti. Zero tempo per te o la famiglia.'
-  },
-  {
-    icon: '📊',
-    headline: 'Non sai come va il business',
-    body: 'Quanti clienti nuovi questo mese? Quanti no-show? Chi non torna più? Vai a sensazione, non hai dati.'
+    icon: <EyeOff className="w-8 h-8" />,
+    headline: 'Zero controllo',
+    body: 'Quanti clienti nuovi questo mese? Quale servizio vende di più? Non lo sai, quindi non puoi migliorare.'
   }
 ]
 
 export default function ProblemSection() {
+  const sectionRef = useRef<HTMLElement>(null)
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
   const ctaRef = useRef<HTMLDivElement>(null)
 
@@ -84,7 +78,7 @@ export default function ProblemSection() {
             opacity: 1,
             y: 0,
             duration: 0.6,
-            delay: 1,
+            delay: 0.5,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: ctaRef.current,
@@ -100,43 +94,49 @@ export default function ProblemSection() {
   }, [])
 
   return (
-    <Section className="bg-gray-50 dark:bg-gray-900">
+    <section
+      ref={sectionRef}
+      className="relative py-24 md:py-32 bg-navy-deep"
+    >
       <Container>
-        <SectionTitle
-          badge="Il Problema"
-          title="Ti riconosci?"
-          className="text-center mb-12 md:mb-16"
-        />
+        <div className="text-center mb-16">
+          <span className="inline-block mb-4 px-4 py-2 bg-white/5 border border-cyan-electric/30 rounded-full text-sm text-cyan-electric font-medium">
+            Il Problema
+          </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white">
+            Ti riconosci?
+          </h2>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16">
           {painPoints.map((point, index) => (
-            <Card
+            <div
               key={index}
               ref={(el) => {
                 cardsRef.current[index] = el
               }}
-              className="group hover:scale-[1.02] transition-transform duration-300"
+              className="group p-8 bg-navy-mid/50 border border-white/10 rounded-xl hover:border-cyan-electric/50 hover:shadow-lg hover:shadow-cyan-electric/10 transition-all duration-300"
             >
-              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
+              <div className="text-cyan-electric mb-6 transform group-hover:scale-110 transition-transform duration-300">
                 {point.icon}
               </div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+              <h3 className="text-xl font-bold mb-3 text-white font-heading">
                 {point.headline}
               </h3>
-              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+              <p className="text-text-secondary leading-relaxed">
                 {point.body}
               </p>
-            </Card>
+            </div>
           ))}
         </div>
 
         <div
           ref={ctaRef}
-          className="text-center mt-12 md:mt-16"
+          className="text-center"
         >
           <a
             href="#solution"
-            className="inline-flex items-center text-lg font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors group"
+            className="inline-flex items-center text-lg font-medium text-cyan-electric hover:text-teal-bright transition-colors group"
           >
             C'è un modo migliore
             <svg
@@ -150,6 +150,6 @@ export default function ProblemSection() {
           </a>
         </div>
       </Container>
-    </Section>
+    </section>
   )
 }

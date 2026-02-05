@@ -14,10 +14,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-primary hover:bg-primary-600 text-white shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.02]',
-  secondary: 'bg-accent hover:bg-accent-600 text-white shadow-lg shadow-accent/30 hover:shadow-accent/50 hover:scale-[1.02]',
-  ghost: 'bg-transparent hover:bg-background-surface text-text-primary hover:scale-[1.02]',
-  outline: 'border-2 border-primary hover:bg-primary text-primary hover:text-white hover:scale-[1.02]',
+  primary: 'bg-gradient-to-r from-cyan-electric to-teal-bright text-navy-deep font-bold shadow-lg shadow-cyan-electric/30 hover:shadow-cyan-electric/50 hover:shadow-xl hover:-translate-y-0.5',
+  secondary: 'bg-transparent border-2 border-cyan-electric text-cyan-electric hover:bg-cyan-electric/10 hover:border-teal-bright hover:text-teal-bright',
+  ghost: 'bg-transparent hover:bg-white/5 text-white',
+  outline: 'border-2 border-white/20 text-white hover:border-cyan-electric hover:text-cyan-electric',
 }
 
 const sizeStyles: Record<ButtonSize, string> = {
@@ -34,7 +34,7 @@ export default function Button({
   className,
   ...rest
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 ease-in-out'
+  const baseStyles = 'inline-flex items-center justify-center font-heading font-medium rounded-lg transition-all duration-300 ease-in-out'
   const combinedStyles = cn(baseStyles, variantStyles[variant], sizeStyles[size], className)
 
   if (href) {
