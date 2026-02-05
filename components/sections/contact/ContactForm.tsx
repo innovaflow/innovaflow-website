@@ -147,7 +147,7 @@ export default function ContactForm() {
   }
 
   return (
-    <Section ref={sectionRef}>
+    <Section ref={sectionRef} id="contact-form">
       <Container>
         <div className="grid md:grid-cols-2 gap-12">
           {/* Form */}
