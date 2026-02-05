@@ -58,36 +58,36 @@ export default function CaseStudySection() {
   useEffect(() => {
     const metricElements = metricsRef.current.filter(Boolean)
     
-    if (metricElements.length > 0) {
-      ScrollTrigger.create({
-        trigger: metricElements[0],
-        start: 'top 60%',
-        onEnter: () => {
-          metrics.forEach((metric, index) => {
-            gsap.to(
-              {},
-              {
-                duration: 1.5,
-                ease: 'power2.out',
-                onUpdate: function() {
-                  const progress = this.progress()
-                  const currentValue = Math.floor(metric.value * progress)
-                  setAnimatedValues(prev => {
-                    const newValues = [...prev]
-                    newValues[index] = currentValue
-                    return newValues
-                  })
+    const ctx = gsap.context(() => {
+      if (metricElements.length > 0) {
+        ScrollTrigger.create({
+          trigger: metricElements[0],
+          start: 'top 60%',
+          onEnter: () => {
+            metrics.forEach((metric, index) => {
+              gsap.to(
+                {},
+                {
+                  duration: 1.5,
+                  ease: 'power2.out',
+                  onUpdate: function() {
+                    const progress = this.progress()
+                    const currentValue = Math.floor(metric.value * progress)
+                    setAnimatedValues(prev => {
+                      const newValues = [...prev]
+                      newValues[index] = currentValue
+                      return newValues
+                    })
+                  }
                 }
-              }
-            )
-          })
-        }
-      })
-    }
+              )
+            })
+          }
+        })
+      }
+    })
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
-    }
+    return () => ctx.revert()
   }, [])
 
   return (

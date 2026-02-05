@@ -13,26 +13,30 @@ export default function PricingPreviewSection() {
 
   useEffect(() => {
     if (contentRef.current) {
-      gsap.fromTo(
-        contentRef.current,
-        {
-          y: 40,
-          opacity: 0,
-          scale: 0.95
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.8,
-          ease: 'back.out(1.2)',
-          scrollTrigger: {
-            trigger: contentRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none none'
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          contentRef.current!,
+          {
+            y: 40,
+            opacity: 0,
+            scale: 0.95
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: 'back.out(1.2)',
+            scrollTrigger: {
+              trigger: contentRef.current,
+              start: 'top 70%',
+              toggleActions: 'play none none none'
+            }
           }
-        }
-      )
+        )
+      }, contentRef.current)
+
+      return () => ctx.revert()
     }
   }, [])
 
