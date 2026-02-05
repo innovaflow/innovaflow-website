@@ -3,12 +3,13 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { SmoothScrollProvider } from '@/components/providers/SmoothScroll'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'InnovaFlow - Trasformiamo le tue idee in realtà digitale',
-  description: 'Agenzia digitale specializzata in sviluppo web, design UX/UI e soluzioni innovative per il tuo business.',
+  title: 'InnovaFlow - Il sistema che elimina le inefficienze invisibili del tuo business',
+  description: 'Dashboard personalizzate, chatbot WhatsApp intelligenti, automazioni su misura per PMI. Zero software pre-confezionato.',
 }
 
 export default function RootLayout({
@@ -19,13 +20,15 @@ export default function RootLayout({
   return (
     <html lang="it">
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow pt-20">
-            {children}
-          </main>
-          <Footer />
-        </div>
+        <SmoothScrollProvider>
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </SmoothScrollProvider>
       </body>
     </html>
   )
