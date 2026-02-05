@@ -12,28 +12,28 @@ gsap.registerPlugin(ScrollTrigger)
 
 const alternatives = [
   {
-    icon: '💬',
-    title: 'WhatsApp',
-    description: 'Scrivi direttamente, rispondiamo sempre entro 24h.',
-    link: 'https://wa.me/393123456789', // Placeholder numero
-    linkText: 'Apri WhatsApp',
-    color: 'from-green-500 to-green-600',
-  },
-  {
     icon: '📧',
-    title: 'Email',
-    description: 'Preferisci scrivere? Nessun problema.',
+    title: 'Email Diretta',
+    description: 'Preferisci scrivere? Rispondiamo sempre entro 24 ore, anche nel weekend.',
     link: 'mailto:innovabsn.flow@gmail.com',
     linkText: 'Invia Email',
     color: 'from-primary to-accent',
   },
   {
-    icon: '📅',
-    title: 'Calendario',
-    description: 'Prenota una chiamata conoscitiva (30 min).',
-    link: '#', // Placeholder Calendly/Cal.com
-    linkText: 'Prenota Chiamata',
+    icon: '💡',
+    title: 'Compila il Form',
+    description: 'Il modo più veloce per darci tutti i dettagli del tuo business.',
+    link: '#contact-form',
+    linkText: 'Vai al Form',
     color: 'from-accent to-purple-600',
+  },
+  {
+    icon: '⚡',
+    title: 'Risposta Rapida',
+    description: 'Prima consulenza gratuita. Ti contatteremo per una chiamata di 30 minuti.',
+    link: '#contact-form',
+    linkText: 'Richiedi Consulenza',
+    color: 'from-indigo-500 to-purple-600',
   },
 ]
 
