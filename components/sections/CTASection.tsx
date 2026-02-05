@@ -75,7 +75,7 @@ export default function CTASection() {
             </a>
             
             <a
-              href="/case-studies/carmine-iazzetta"
+              href="/case-studies"
               className="inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold text-lg rounded-lg border-2 border-white/30 hover:bg-white/20 transition-all duration-300 hover:scale-105"
             >
               Guarda il caso Carmine
