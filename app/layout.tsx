@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScroll'
+import PageTransition from '@/components/providers/PageTransition'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,13 +22,15 @@ export default function RootLayout({
     <html lang="it">
       <body className={inter.className}>
         <SmoothScrollProvider>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-grow">
-              {children}
-            </main>
-            <Footer />
-          </div>
+          <PageTransition>
+            <div className="flex flex-col min-h-screen">
+              <Header />
+              <main className="flex-grow">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </PageTransition>
         </SmoothScrollProvider>
       </body>
     </html>

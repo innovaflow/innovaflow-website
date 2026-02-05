@@ -13,7 +13,7 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         ref={ref}
         className={cn(
           'bg-background-surface border border-background-surface-secondary rounded-xl p-6',
-          'hover:-translate-y-1 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10',
+          'hover:scale-[1.02] hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10',
           'transition-all duration-300 ease-in-out',
           className
         )}

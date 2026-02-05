@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import Button from '@/components/ui/Button'
 import GradientText from '@/components/ui/GradientText'
+import ScrollProgress from '@/components/ui/ScrollProgress'
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -27,12 +28,14 @@ export default function Header() {
   ]
 
   return (
-    <header 
-      className={cn(
-        'fixed top-0 w-full z-50 backdrop-blur-md bg-background/80 transition-all duration-300',
-        isScrolled && 'border-b border-background-surface-secondary'
-      )}
-    >
+    <>
+      <ScrollProgress />
+      <header 
+        className={cn(
+          'fixed top-0 w-full z-50 backdrop-blur-md bg-background/80 transition-all duration-300',
+          isScrolled && 'border-b border-background-surface-secondary'
+        )}
+      >
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
@@ -46,9 +49,10 @@ export default function Header() {
               <li key={link.href}>
                 <Link 
                   href={link.href} 
-                  className="text-text-secondary hover:text-text-primary transition-colors duration-300"
+                  className="relative text-text-secondary hover:text-text-primary transition-colors duration-300 group"
                 >
                   {link.label}
+                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
                 </Link>
               </li>
             ))}
@@ -122,5 +126,6 @@ export default function Header() {
         </div>
       </nav>
     </header>
+    </>
   )
 }
