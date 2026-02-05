@@ -1,12 +1,18 @@
+import CaseStudiesHero from '@/components/sections/case-studies/CaseStudiesHero'
+import CarmineFullCase from '@/components/sections/case-studies/CarmineFullCase'
+import FutureCasesSection from '@/components/sections/case-studies/FutureCasesSection'
+
+export const metadata = {
+  title: 'Case Studies | InnovaFlow — Risultati Reali',
+  description: 'Risultati reali di clienti reali. Carmine Iazzetta: da caos WhatsApp a 350 prenotazioni/mese automatiche con €50/mese.',
+}
+
 export default function CaseStudies() {
   return (
-    <div className="container mx-auto px-6 py-16">
-      <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-        Case Studies
-      </h1>
-      <p className="text-xl text-muted">
-        Questa pagina è in fase di sviluppo.
-      </p>
-    </div>
+    <main>
+      <CaseStudiesHero />
+      <CarmineFullCase />
+      <FutureCasesSection />
+    </main>
   )
 }
