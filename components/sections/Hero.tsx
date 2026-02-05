@@ -116,6 +116,7 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
           <Button
+            href="/servizi"
             className="hero-cta w-full sm:w-auto px-8 py-4 text-lg"
             variant="primary"
           >
@@ -123,7 +124,7 @@ export default function Hero() {
           </Button>
           
           <a
-            href="#contact"
+            href="/contatti"
             className="hero-cta group text-white/90 hover:text-white transition-colors text-lg font-medium"
           >
             Parla con noi
