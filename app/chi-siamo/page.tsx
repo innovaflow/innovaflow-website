@@ -1,12 +1,16 @@
+import React from 'react'
+import AboutHero from '@/components/sections/about/AboutHero'
+import FounderSection from '@/components/sections/about/FounderSection'
+import HowWeWorkSection from '@/components/sections/about/HowWeWorkSection'
+import ValuesSection from '@/components/sections/about/ValuesSection'
+
 export default function ChiSiamo() {
   return (
-    <div className="container mx-auto px-6 py-16">
-      <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-        Chi Siamo
-      </h1>
-      <p className="text-xl text-muted">
-        Questa pagina è in fase di sviluppo.
-      </p>
-    </div>
+    <main>
+      <AboutHero />
+      <FounderSection />
+      <HowWeWorkSection />
+      <ValuesSection />
+    </main>
   )
 }

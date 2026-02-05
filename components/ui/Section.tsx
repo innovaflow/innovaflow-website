@@ -7,10 +7,16 @@ interface SectionProps {
   id?: string
 }
 
-export default function Section({ children, className, id }: SectionProps) {
-  return (
-    <section id={id} className={cn('py-20 md:py-32', className)}>
-      {children}
-    </section>
-  )
-}
+const Section = React.forwardRef<HTMLElement, SectionProps>(
+  ({ children, className, id }, ref) => {
+    return (
+      <section ref={ref} id={id} className={cn('py-20 md:py-32', className)}>
+        {children}
+      </section>
+    )
+  }
+)
+
+Section.displayName = 'Section'
+
+export default Section
