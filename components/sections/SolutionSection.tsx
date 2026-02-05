@@ -48,31 +48,35 @@ export default function SolutionSection() {
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
-    const cards = cardsRef.current.filter(Boolean)
-    
-    if (cards.length > 0) {
-      gsap.fromTo(
-        cards,
-        {
-          y: 40,
-          opacity: 0,
-          scale: 0.95
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: cards[0],
-            start: 'top 70%',
-            toggleActions: 'play none none none'
+    const ctx = gsap.context(() => {
+      const cards = cardsRef.current.filter(Boolean)
+      
+      if (cards.length > 0) {
+        gsap.fromTo(
+          cards,
+          {
+            y: 40,
+            opacity: 0,
+            scale: 0.95
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.5,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: cards[0],
+              start: 'top 70%',
+              toggleActions: 'play none none none'
+            }
           }
-        }
-      )
-    }
+        )
+      }
+    })
+
+    return () => ctx.revert()
   }, [])
 
   return (

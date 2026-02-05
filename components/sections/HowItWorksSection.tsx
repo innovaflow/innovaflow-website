@@ -53,54 +53,58 @@ export default function HowItWorksSection() {
   const lineRef = useRef<SVGPathElement>(null)
 
   useEffect(() => {
-    const stepElements = stepsRef.current.filter(Boolean)
-    
-    if (stepElements.length > 0) {
-      gsap.fromTo(
-        stepElements,
-        {
-          y: 20,
-          opacity: 0,
-          scale: 0.95
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 0.5,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: stepElements[0],
-            start: 'top 70%',
-            toggleActions: 'play none none none'
-          }
-        }
-      )
-    }
-
-    if (lineRef.current) {
-      const path = lineRef.current
-      const length = path.getTotalLength()
+    const ctx = gsap.context(() => {
+      const stepElements = stepsRef.current.filter(Boolean)
       
-      gsap.fromTo(
-        path,
-        {
-          strokeDasharray: length,
-          strokeDashoffset: length
-        },
-        {
-          strokeDashoffset: 0,
-          duration: 2,
-          ease: 'power2.inOut',
-          scrollTrigger: {
-            trigger: path,
-            start: 'top 60%',
-            toggleActions: 'play none none none'
+      if (stepElements.length > 0) {
+        gsap.fromTo(
+          stepElements,
+          {
+            y: 20,
+            opacity: 0,
+            scale: 0.95
+          },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.5,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: stepElements[0],
+              start: 'top 70%',
+              toggleActions: 'play none none none'
+            }
           }
-        }
-      )
-    }
+        )
+      }
+
+      if (lineRef.current) {
+        const path = lineRef.current
+        const length = path.getTotalLength()
+        
+        gsap.fromTo(
+          path,
+          {
+            strokeDasharray: length,
+            strokeDashoffset: length
+          },
+          {
+            strokeDashoffset: 0,
+            duration: 2,
+            ease: 'power2.inOut',
+            scrollTrigger: {
+              trigger: path,
+              start: 'top 60%',
+              toggleActions: 'play none none none'
+            }
+          }
+        )
+      }
+    })
+
+    return () => ctx.revert()
   }, [])
 
   return (

@@ -13,25 +13,29 @@ export default function CTASection() {
 
   useEffect(() => {
     if (contentRef.current) {
-      gsap.fromTo(
-        contentRef.current.children,
-        {
-          y: 30,
-          opacity: 0
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: contentRef.current,
-            start: 'top 70%',
-            toggleActions: 'play none none none'
+      const ctx = gsap.context(() => {
+        gsap.fromTo(
+          contentRef.current!.children,
+          {
+            y: 30,
+            opacity: 0
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: contentRef.current,
+              start: 'top 70%',
+              toggleActions: 'play none none none'
+            }
           }
-        }
-      )
+        )
+      }, contentRef.current)
+
+      return () => ctx.revert()
     }
   }, [])
 
